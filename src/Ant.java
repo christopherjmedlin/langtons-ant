@@ -6,10 +6,8 @@ import java.awt.Point;
  * @author Christopher Medlin
  * @since Nov 17 2016
  */
-public class Ant {
+public class Ant extends Point {
 	
-	private Point currentCell;
-	private ArrayList<Point> notableCells;
 	private Direction direction;
         
 	private enum Direction {
