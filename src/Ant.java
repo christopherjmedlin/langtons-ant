@@ -13,41 +13,16 @@ public class Ant {
 	private Direction direction;
         
 	private enum Direction {
-		int dir;
+		public int dir;
 		LEFT(-1), UP(0), RIGHT(1), DOWN(2);
 		
 		public Direction (int dir) {
 			this.dir = dir;
 		}
-
-		public void turnRight () {
-			if (dir == 2) {
-				dir = -1;
-			}
-			else {
-				dir++;
-			}
-		}
-
-		public void turnLeft () {
-			if (dir == -1) {
-				dir = 2;
-			}
-			else {
-				dir--;
-			}
-		}
 	}
 
-	public Ant (ArrayList<Point> notableCells, Point currentCell) {
-		this.notableCells = notableCells;
-		this.currentCell = currentCell;
-		direction = Direction.RIGHT;
-	}
-
-	public Ant (ArrayList<Point> notableCells) {
-		this.notableCells = notableCells;
-		currentCell = new Point (0,0);
+	public Ant (x, y) {
+		super(x, y);
 		direction = Direction.RIGHT;
 	}
 
@@ -63,6 +38,24 @@ public class Ant {
 		}
 		else if (direction == Direction.DOWN) {
 			currentCell.y--;
+		}
+	}
+
+	public void turnRight () {
+		if (direction.dir == 2) {
+			direction.dir = -1;
+		}
+		else {
+			direction.dir++;
+		}
+	}
+
+	public void turnLeft () {
+		if (direction.dir == -1) {
+			direction.dir = 2;
+		}
+		else {
+			direction.dir--;
 		}
 	}
 
