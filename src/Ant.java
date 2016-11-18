@@ -11,31 +11,31 @@ public class Ant extends Point {
 	private Direction direction;
         
 	private enum Direction {
-		public int dir;
 		LEFT(-1), UP(0), RIGHT(1), DOWN(2);
-		
-		public Direction (int dir) {
+		public int dir;
+	
+		private Direction (int dir) {
 			this.dir = dir;
 		}
 	}
 
-	public Ant (x, y) {
+	public Ant (int x, int y) {
 		super(x, y);
 		direction = Direction.RIGHT;
 	}
 
 	public void move () {
 		if (direction == Direction.LEFT) {
-			currentCell.x--;
+			x--;
 		}
 		else if (direction == Direction.UP) {
-			currentCell.y++;
+			y--;
 		}
 		else if (direction == Direction.RIGHT) {
-			currentCell.x++;
+			x++;
 		}
 		else if (direction == Direction.DOWN) {
-			currentCell.y--;
+			y++;
 		}
 	}
 
@@ -55,9 +55,5 @@ public class Ant extends Point {
 		else {
 			direction.dir--;
 		}
-	}
-
-	public Point getCurrentCell () {
-		return currentCell;
 	}
 }

@@ -12,7 +12,23 @@ public class LangtonsAnt {
 	private ArrayList<Ant> ants;
 
 	public void nextGeneration () {
-		
+		boolean isOnBlackCell;
+		for (Ant ant : ants) {
+			isOnBlackCell = false;
+			for (Point cell : blackCells) {
+				if (ant.x == cell.x &&
+				    ant.y == cell.y) {
+					ant.turnLeft();
+					blackCells.remove(cell);
+					isOnBlackCell = true;
+				}
+			}
+			if (!isOnBlackCell) {
+				ant.turnRight();
+				blackCells.add(new Point(ant.x, ant.y))
+			}
+			ant.move();
+		}	
 	} 
 
 	public boolean addBlackCell (Point blackCell) {
@@ -28,5 +44,28 @@ public class LangtonsAnt {
 			blackCells.add(blackCell);
 		
 		return success;
-	} 	
+	}
+	
+	public boolean addAnt (Ant ant) {
+		boolean success = true;
+
+		for (int i = 0; i < ants.size(); i++) {
+			if (ants.get(i).x == ant.x ||
+			    ants.get(i).y == ant.y)
+				success = false;
+		}
+		
+		if (success == true)
+			ants.add(ant);
+		
+		return success;
+	}
+
+	public ArrayList<Point> getBlackCells () {
+		return blackCells;
+	}
+	
+	public ArrayList<Ant> getAnts () {
+		return ants;
+	}	
 }
