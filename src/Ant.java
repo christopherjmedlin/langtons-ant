@@ -1,5 +1,5 @@
 import java.awt.Point;
-
+import java.util.Random;
 /**
  * Ant is a class that resembles an ant in a session of Langton's Ant.
  *
@@ -8,75 +8,49 @@ import java.awt.Point;
  */
 public class Ant extends Point {
 	
-	
-	//           IMPORTANT!!!! (READ THIS, SCUM)
-	//     your enum didn't work for some reason - the ant didn't turn at all
-	//     now, I know that the reason for that might be something else but
-	//     I'm very confident that it was the enum that messed it up
-	//     
-	//     P.S.   out of my great respect for your coding skills, the original
-	//     code is left commented out. If you wish to go back, delete the
-	//     comment marks and whatever is TOUCHING (that is, immideately follows) the "end comment" (*/) mark
-	//        
-	//                                                  best wishes,
-	//												retatded person
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private /*Direction*/int direction;
-        
-	/*private enum Direction {
-		LEFT(-1), UP(0), RIGHT(1), DOWN(2);
-		public int dir;
-	
-		private Direction (int dir) {
-			this.dir = dir;
-		}
-	}*/
+	// DIRECTIONS as numbers:
+	// -1 left
+	// 0  up
+	// 1  right
+	// 2  down
+	private int direction;
 	
 	public Ant (int x, int y) {
 		super(x, y);
-		direction = /*Direction.RIGHT*/1;
+		Random r = new Random();     // give each new ant a random direction
+		direction = r.nextInt(3)-1;
 	}
 
 	public void move () {
-		if (direction == /*Direction.LEFT*/-1) {
+		if (direction == -1) {
 			x--;
 		}
-		else if (direction == /*Direction.UP*/0) {
+		else if (direction == 0) {
 			y--;
 		}
-		else if (direction == /*Direction.RIGHT*/1) {
+		else if (direction == 1) {
 			x++;
 		}
-		else if (direction == /*Direction.DOWN*/2) {
+		else if (direction == 2) {
 			y++;
 		}
 	}
 
 	public void turnRight () {
-		if (direction/*.dir*/ == 2) {
-			direction/*.dir*/ = -1;
+		if (direction == 2) {
+			direction = -1;
 		}
 		else {
-			direction/*.dir*/++;
+			direction++;
 		}
 	}
 
 	public void turnLeft () {
-		if (direction/*.dir*/ == -1) {
-			direction/*.dir*/ = 2;
+		if (direction == -1) {
+			direction = 2;
 		}
 		else {
-			direction/*.dir*/--;
+			direction--;
 		}
 	}
 }

@@ -45,9 +45,9 @@ public class LangtonsAnt {
 	public boolean addBlackCell (Point blackCell) {
 		boolean success = true;
 
-		for (int i = 0; i < blackCells.size(); i++) {
-			if (blackCells.get(i).x == blackCell.x ||
-			    blackCells.get(i).y == blackCell.y) 
+		for (Point cell : blackCells) {
+			if (cell.x == blackCell.x &&
+			    cell.y == blackCell.y) 
 				success = false;
 		}
 		
@@ -59,10 +59,10 @@ public class LangtonsAnt {
     
 	public boolean addAnt (Ant ant) {
 		boolean success = true;
-		// foreach maybe?
-		for (int i = 0; i < ants.size(); i++) {
-			if (ants.get(i).x == ant.x ||
-			    ants.get(i).y == ant.y)
+
+		for (Ant a : ants) {
+			if (a.x == ant.x &&
+			    a.y == ant.y)
 				success = false;
 		}
 		
