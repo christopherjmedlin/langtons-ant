@@ -16,7 +16,7 @@ public class LangtonsPanel extends JPanel implements ActionListener, MouseListen
 	private Dimension d;
 	private Timer t;
 	boolean displayInfoText;
-	private int scale, generationCounter;
+	private int scale;
 	
 	public LangtonsPanel (Dimension d, int scale, int delay) {
 		this.d = d;
@@ -30,7 +30,6 @@ public class LangtonsPanel extends JPanel implements ActionListener, MouseListen
 		la = new LangtonsAnt();
 		la.addAnt(new Ant(d.width/(2*scale),d.height/(2*scale)));  // The panel is initialized with a single ant in the middle of the screen
 		
-		generationCounter = 0;   // To display the current generation
 		t = new Timer(delay,this);
 		t.start();
 	}
@@ -41,7 +40,6 @@ public class LangtonsPanel extends JPanel implements ActionListener, MouseListen
 	*/
     public void actionPerformed (ActionEvent e) {
 		la.nextGeneration();
-		generationCounter++;
 		repaint();
 	}
 	
@@ -79,7 +77,7 @@ public class LangtonsPanel extends JPanel implements ActionListener, MouseListen
 		g.setColor(Color.WHITE);                                                 // Draws a white background rectangle so that the
 		g.fillRect(d.width/100,d.height/2-15,150,20);                            // generation is visible even if there are cells under it
 		g.setColor(Color.BLACK);
-		g.drawString("Generation: "+generationCounter,d.width/100,d.height/2);
+		g.drawString("Generation: "+LangtonsAnt.generation,d.width/100,d.height/2);
 
 		if (displayInfoText) {                                                   // Makes the user aware of the controls 
 			g.drawString("CONTROLS:",100,d.height/20);                           // disappears as soon the user utilizes one of the controls

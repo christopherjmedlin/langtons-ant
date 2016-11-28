@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class LangtonsAnt {
 	private ArrayList<Point> blackCells;
 	private ArrayList<Ant> ants;
+	public static int generation = 0;
 	
 	public LangtonsAnt() {
 		blackCells = new ArrayList<Point>();
@@ -38,7 +39,7 @@ public class LangtonsAnt {
 			}
 			blackCells = blackCellsCopy;    // A copy becomes the actual list again
 			ant.move();
-
+			generation++;
 		}	
 	} 
 
